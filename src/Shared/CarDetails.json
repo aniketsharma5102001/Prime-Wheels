@@ -1,0 +1,225 @@
+{
+    "CarDetails": [
+        {
+            "label": "Listing Title",
+            "name": "listingTitle",
+            "fieldType": "text",
+            "required": true,
+            "column": 2,
+            "icon": "FaClipboardList"
+        },
+        {
+            "label": "Tagline",
+            "name": "tagline",
+            "fieldType": "text",
+            "column": 2,
+            "icon": "FaTag"
+        },
+        {
+            "label": "Original Price",
+            "name": "originalprice",
+            "fieldType": "text",
+            "column": 1,
+            "icon": "FaDollarSign"
+        },
+        {
+            "label": "Selling price",
+            "name": "SellingPrice",
+            "fieldType": "text",
+            "column": 1,
+            "icon": "FaDollarSign"
+        },
+        {
+            "label": "Catagory",
+            "name": "catagory",
+            "fieldType": "dropdown",
+            "options": [
+                "Sedan",
+                "SUV",
+                "Truck",
+                "Couper",
+                "Convertible",
+                "van"
+            ],
+            "required": true,
+            "column": 1,
+            "icon": "FaCar"
+        },
+        {
+            "label": "Condition",
+            "name": "condition",
+            "fieldType": "dropdown",
+            "required": true,
+            "options": [
+                "New",
+                "Used",
+                "Certified Pre-Owned"
+            ],
+            "column": 1,
+            "icon": "FaCheckCircle"
+        },
+        {
+            "label": "Type",
+            "name": "Type",
+            "fieldType": "dropdown",
+            "required": true,
+            "options": [
+                "Electric",
+                "Hybride",
+                "Petrol",
+                "Diesel"
+            ],
+            "column": 1,
+            "icon": "FaChargingStation"
+        },
+        {
+            "label": "Make",
+            "name": "make",
+            "fieldType": "dropdown",
+            "required": true,
+            "options": [
+                "Toyota",
+                "Honda",
+                "Ford",
+                "Chevrolet",
+                "Nissan",
+                "BMW",
+                "Mercedes-Benz",
+                "Audi",
+                "Tesla",
+                "Volkswagen",
+                "Hyundai",
+                "Kia",
+                "Lexus",
+                "Subaru",
+                "Mazda",
+                "Jeep",
+                "Dodge",
+                "Ram",
+                "GMC",
+                "Volvo",
+                "Land Rover",
+                "Jaguar",
+                "Porsche",
+                "Fait",
+                "Alfa Romeo",
+                "Mitsubisbi",
+                "Infiniti",
+                "Acura",
+                "Mini",
+                "Buick",
+                "Codillac",
+                "Chrysler",
+                "Lincolo",
+                "Maserati",
+                "Bentley",
+                "Rolls-Royce",
+                "Astro Martin",
+                "Bugatti"
+            ],
+            "column": 1,
+            "icon": "FaIndustry"
+        },
+        {
+            "label": "Model",
+            "name": "model",
+            "fieldType": "text",
+            "required": true,
+            "column": 1,
+            "icon": "FaCarSide"
+        },
+        {
+            "label": "Year",
+            "name": "year",
+            "fieldType": "number",
+            "required": true,
+            "column": 1,
+            "icon": "FaCalendarAlt"
+        },
+        {
+            "label": "Driver Type",
+            "name": "driveType",
+            "fieldType": "dropdown",
+            "options": [
+                "FWD",
+                "RWD",
+                "AWD",
+                "4WD"
+            ],
+            "required": true,
+            "column": 1,
+            "icon": "FaRoad"
+        },
+        {
+            "label": "Engine Size",
+            "name": "engineSize",
+            "fieldType": "text",
+            "required": true,
+            "column": 1,
+            "icon": "FaWrench"
+        },
+        {
+            "label": "Cylinder",
+            "name": "cylinder",
+            "fieldType": "number",
+            "required": true,
+            "column": 1,
+            "icon": "FaCircle"
+            
+        },
+        {
+            "label": "Color",
+            "name": "color",
+            "fieldType": "dropdown",
+            "required": true,
+            "options": [
+                "Black",
+                "Blue",
+                "Gold",
+                "Pink",
+                "Red",
+                "Silver",
+                "White"
+            ],
+            "column": 2,
+            "icon": "FaPalette"
+        },
+        {
+            "label": "Door",
+            "name": "door",
+            "fieldType": "number",
+            "required": true,
+            "column": 1,
+            "icon": "FaDoorClosed"
+        },
+        {
+            "label": "VIN",
+            "name": "vin",
+            "fieldType": "text",
+            "required": true,
+            "column": 1,
+            "icon": "FaIdCard"
+        },
+        {
+            "label": "Offer Type",
+            "name": "offerType",
+            "fieldType": "dropdown",
+            "options": [
+                "Buy",
+                "Hot Offer",
+                "Sell",
+                "Urgent"
+            ],
+            "column": 2,
+            "icon": "FaTags"
+        },
+        {
+            "label": "Listing Description",
+            "name": "listingDescription",
+            "fieldType": "textarea",
+            "required": true,
+            "column": 2,
+            "icon": "FaFileAlt"
+        }
+    ]
+}
