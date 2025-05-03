@@ -13,6 +13,7 @@ import { db } from './../../configs';
 import { Carlisting } from './../../configs/schema';
 import TextAreaField from '@/components/TextAreaField';
 import IconField from '@/components/IconField';
+import UploadImage from './Component/UploadImages';
 
 
 
@@ -105,6 +106,9 @@ const handleFeatureChange=(name,value)=>{
             ))}
           </div>
           {/* Car Images*/}
+          <Separator />
+          <UploadImage/>
+
           <div className='mt-5 flex justify-end'>
             <Button type="submit" onClick={(e) => onSubmit(e)} >
               Submit

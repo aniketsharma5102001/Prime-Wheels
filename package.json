@@ -23,6 +23,7 @@
     "dotenv": "^16.5.0",
     "drizzle-orm": "^0.42.0",
     "embla-carousel-react": "^8.6.0",
+    "firebase": "^11.6.1",
     "lucide-react": "^0.487.0",
     "pg": "^8.14.1",
     "react": "^19.0.0",
