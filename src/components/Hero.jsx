@@ -8,7 +8,10 @@ function Hero() {
                 <h2 className='text-[60px]'>Drive Your Dream Car</h2>
 
                 <Search />
+                <div className='mb-40'>
                 <img src='/Tesla.png'className='mt-5' />
+                </div>
+        
             </div>
         </div>
     )

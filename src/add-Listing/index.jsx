@@ -107,7 +107,7 @@ const handleFeatureChange=(name,value)=>{
           </div>
           {/* Car Images*/}
           <Separator />
-          <UploadImage/>
+         
 
           <div className='mt-5 flex justify-end'>
             <Button type="submit" onClick={(e) => onSubmit(e)} >
@@ -116,7 +116,7 @@ const handleFeatureChange=(name,value)=>{
           </div>
 
         </form>
-
+        <UploadImage/>
       </div>
     </div>
   )
