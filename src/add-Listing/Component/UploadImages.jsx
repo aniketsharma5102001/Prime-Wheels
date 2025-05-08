@@ -4,7 +4,7 @@ import { supabase } from './../../../configs/supabaseClient';
 import { db } from './../../../configs';
 import { CarImages } from './../../../configs/schema';
 
-function UploadImages({ triggerUploadImages, onUploadComplete }) {
+function UploadImages({ triggerUploadImages, onUploadComplete, setLoader }) { // ✅ MODIFIED
   const [selectedFileList, setSelectedFileList] = useState([]);
   const [imageUrls, setImageUrls] = useState([]);
 
@@ -30,6 +30,8 @@ function UploadImages({ triggerUploadImages, onUploadComplete }) {
       return;
     }
 
+    if (setLoader) setLoader(true); // ✅ ADDED
+
     const urls = [];
 
     for (const file of selectedFileList) {
@@ -37,7 +39,6 @@ function UploadImages({ triggerUploadImages, onUploadComplete }) {
       const fileName = `${Date.now()}.${fileExt}`;
       const filePath = `upload_images/${fileName}`;
 
-      // Upload to Supabase Storage
       const { error: uploadError } = await supabase.storage
         .from('prime-wheels')
         .upload(filePath, file, {
@@ -50,7 +51,6 @@ function UploadImages({ triggerUploadImages, onUploadComplete }) {
         continue;
       }
 
-      // Get public URL
       const { data: publicUrlData, error: urlError } = supabase.storage
         .from('prime-wheels')
         .getPublicUrl(filePath);
@@ -65,7 +65,6 @@ function UploadImages({ triggerUploadImages, onUploadComplete }) {
       console.log('Uploaded to:', filePath);
       console.log('Public URL:', publicUrl);
 
-      // ✅ Insert using correct schema key: CarListingId (case-sensitive)
       try {
         await db.insert(CarImages).values({
           imageUrl: publicUrl,
@@ -79,6 +78,7 @@ function UploadImages({ triggerUploadImages, onUploadComplete }) {
 
     setImageUrls(urls);
     if (onUploadComplete) onUploadComplete(urls);
+    if (setLoader) setLoader(false); // ✅ ADDED
   };
 
   return (

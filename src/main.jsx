@@ -8,6 +8,7 @@ import Contact from './contact'
 import {ClerkProvider  } from "@clerk/clerk-react";
 import Profile from './profile'
 import AddListing from './add-Listing';
+import { Toaster } from './components/ui/sonner'
 
 
 
@@ -43,7 +44,7 @@ createRoot(document.getElementById('root')).render(
      <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
      
     <RouterProvider router={router} />
-    
+    <Toaster />
     </ClerkProvider>
   </StrictMode>,
 )
