@@ -1,59 +1,84 @@
-import React, { useState } from 'react';
-import { Button } from '@/components/ui/button';
+import React, { useState, useEffect } from 'react';
 import { IoMdCloseCircle } from "react-icons/io";
 import { supabase } from './../../../configs/supabaseClient';
+import { db } from './../../../configs';
+import { CarImages } from './../../../configs/schema';
 
-function UploadImages() {
+function UploadImages({ triggerUploadImages, onUploadComplete }) {
   const [selectedFileList, setSelectedFileList] = useState([]);
   const [imageUrls, setImageUrls] = useState([]);
 
+  useEffect(() => {
+    if (triggerUploadImages && selectedFileList.length > 0) {
+      console.log("Triggering image upload for listing:", triggerUploadImages);
+      uploadImages();
+    }
+  }, [triggerUploadImages]);
+
   const onFileSelected = (event) => {
-    const files = event.target.files;
-    setSelectedFileList([...selectedFileList, ...files]); // Properly update file state
+    const files = Array.from(event.target.files);
+    setSelectedFileList((prevFiles) => [...prevFiles, ...files]);
   };
 
   const onImageRemove = (image) => {
-    setSelectedFileList(selectedFileList.filter((item) => item !== image));
+    setSelectedFileList((prevFiles) => prevFiles.filter((item) => item !== image));
   };
 
   const uploadImages = async () => {
+    if (!triggerUploadImages) {
+      console.error("No carListingId provided. Cannot insert image data.");
+      return;
+    }
+
     const urls = [];
 
     for (const file of selectedFileList) {
-      const fileExt = file.name.split('.').pop();
+      const fileExt = file.name.includes('.') ? file.name.split('.').pop() : 'jpg';
       const fileName = `${Date.now()}.${fileExt}`;
       const filePath = `upload_images/${fileName}`;
 
-      // Ensure user is authenticated before uploading
-      const { data: session } = await supabase.auth.getSession();
-      if (!session) {
-        console.error("User is not authenticated!");
-        return;
-      }
-
-      const { error } = await supabase.storage
+      // Upload to Supabase Storage
+      const { error: uploadError } = await supabase.storage
         .from('prime-wheels')
         .upload(filePath, file, {
           contentType: file.type,
           upsert: false,
         });
 
-      if (error) {
-        console.error('Upload failed:', error.message);
+      if (uploadError) {
+        console.error('Upload failed:', uploadError.message);
         continue;
       }
 
-      // Retrieve the public URL correctly
-      const { publicUrl } = supabase.storage.from('prime-wheels').getPublicUrl(filePath);
-      if (publicUrl) {
-        urls.push(publicUrl);
-        console.log('Uploaded to:', filePath);
-      } else {
-        console.error('Error retrieving public URL');
+      // Get public URL
+      const { data: publicUrlData, error: urlError } = supabase.storage
+        .from('prime-wheels')
+        .getPublicUrl(filePath);
+      const publicUrl = publicUrlData?.publicUrl;
+
+      if (urlError || !publicUrl) {
+        console.error('Error retrieving public URL:', urlError?.message || 'URL is undefined');
+        continue;
+      }
+
+      urls.push(publicUrl);
+      console.log('Uploaded to:', filePath);
+      console.log('Public URL:', publicUrl);
+
+      // ✅ Insert using correct schema key: CarListingId (case-sensitive)
+      try {
+        await db.insert(CarImages).values({
+          imageUrl: publicUrl,
+          CarListingId: triggerUploadImages,
+        });
+        console.log('Image URL inserted into DB');
+      } catch (dbError) {
+        console.error('Error inserting image into database:', dbError);
       }
     }
 
-    setImageUrls(urls); // Store URLs for preview
+    setImageUrls(urls);
+    if (onUploadComplete) onUploadComplete(urls);
   };
 
   return (
@@ -63,8 +88,9 @@ function UploadImages() {
         {selectedFileList.map((image, index) => (
           <div key={index} className="relative">
             <IoMdCloseCircle
-              className="absolute m-3 text-lg text-white"
+              className="absolute m-3 text-lg text-white cursor-pointer"
               onClick={() => onImageRemove(image)}
+              title="Remove image"
             />
             <img
               src={URL.createObjectURL(image)}
@@ -73,7 +99,6 @@ function UploadImages() {
             />
           </div>
         ))}
-
         <label htmlFor="upload-images">
           <div className="border rounded-xl border-dotted border-primary bg-blue-100 p-10 cursor-pointer hover:shadow-md">
             <h2 className="text-lg text-center text-primary">+</h2>
@@ -87,25 +112,6 @@ function UploadImages() {
           className="opacity-0"
         />
       </div>
-
-      <Button onClick={uploadImages}>Upload Images</Button>
-
-      {imageUrls.length > 0 && (
-        <div className="mt-5">
-          <h3 className="font-medium text-xl">Uploaded Images</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-5">
-            {imageUrls.map((url, index) => (
-              <div key={index}>
-                <img
-                  src={url}
-                  className="w-full h-[130px] object-cover rounded-xl"
-                  alt="uploaded"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
     </div>
   );
 }
