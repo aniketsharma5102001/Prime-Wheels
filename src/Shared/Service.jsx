@@ -1,30 +1,27 @@
-
-
 const FormatResult = (resp) => {
-    let result = [];
-    let finalResult=[];
-    resp.forEach((item) => {
-        const listingId = item.carListing?.id;
-        if (!result[listingId]) {
-            result[listingId] = {
-                car: item.carListing,
-                images: []
+  const resultMap = new Map();
 
-            }
-        }
-        if (item.carImages) {
-            result[listingId].images.push(item.carImages)
-        }
-    })
-    result.forEach((item)=>{
-finalResult.push({
-    ...item.car,
-    images:item.images
-})
+  resp.forEach((item) => {
+    const car = item.carListing;
+    const image = item.carImages;
 
-    })
-    return finalResult;
-}
+    if (!car) return;
+
+    if (!resultMap.has(car.id)) {
+      resultMap.set(car.id, {
+        ...car,         // Spread all car listing fields here
+        images: [],
+      });
+    }
+
+    if (image) {
+      resultMap.get(car.id).images.push(image);
+    }
+  });
+
+  return Array.from(resultMap.values());
+};
+
 export default {
-    FormatResult
-}
+  FormatResult,
+};
