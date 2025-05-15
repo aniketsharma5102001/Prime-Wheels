@@ -4,10 +4,12 @@ import { LuFuel } from "react-icons/lu";
 import { IoSpeedometerOutline } from "react-icons/io5";
 import { GiGearStickPattern } from "react-icons/gi";
 import { MdOpenInNew } from "react-icons/md";
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 function CarItem({ car }) {
+  
   return (
+    <Link to={'/listing-details/'+car?.id}>
     <div className="rounded-xl bg-white border hover:shadow-md cursor-pointer relative">
       {/* Conditionally render the "New" badge */}
       {car?.offerType === 'New' && (
@@ -56,6 +58,7 @@ function CarItem({ car }) {
         </div>
       </div>
     </div>
+    </Link>
   );
 }
 
