@@ -27,7 +27,14 @@ const pricing=[
     {
         id:3,
         Amout:'3000$'
-    }
+    },
+
+    {
+        id:3,
+        Amout:'4000$'
+    },
+
+    
 ]
 
 const Category=[
