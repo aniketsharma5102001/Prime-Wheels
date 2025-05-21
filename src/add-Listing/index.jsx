@@ -94,7 +94,9 @@ function AddListing() {
         ...formData,
         features: FeaturesData,
         createdBy: user?.primaryEmailAddress?.emailAddress,
-        postedOn: moment().format('DD/MM/yyy')
+        userName:user?.fullName,
+        userImageUrl:user?.imageUrl, 
+        postedOn: moment().format('DD/MM/YYYY')
       }).where(eq(Carlisting.id, recordId)).returning({ id: Carlisting.id });
       console.log(result);
       navigate('/profile')

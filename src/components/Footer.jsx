@@ -4,6 +4,7 @@ function Footer() {
   return (
     <footer className="bg-gray-50">
   <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
+
     <div className="flex justify-center text-teal-600">
       <svg className="h-8" viewBox="0 0 118 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
@@ -50,8 +51,8 @@ function Footer() {
     </div>
 
     <p className="mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-500">
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt consequuntur amet culpa cum
-      itaque neque.
+    Prime Wheels – Your trusted platform to buy, sell, or list cars with ease.
+© 2025 Prime Wheels. All rights reserved.
     </p>
 
     <ul className="mt-12 flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12">

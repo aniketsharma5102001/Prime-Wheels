@@ -24,6 +24,9 @@ export const Carlisting = pgTable('carListing', {
     listingDescription: varchar('listingDescription').notNull(),
     features: json('features'),
     createdBy: varchar('createdBy').notNull(),
+    userName:varchar('userName').notNull().default('Aniket Sharma'),
+   userImageUrl: varchar('userImageUrl').default(''),
+
     postedOn:varchar('postedOn')
 })
 

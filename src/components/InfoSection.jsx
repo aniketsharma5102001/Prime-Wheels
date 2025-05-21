@@ -16,13 +16,13 @@ function infoSection() {
       <div class="md:col-span-1">
         <div class="max-w-lg md:max-w-none">
           <h2 class="text-2xl font-semibold text-gray-900 sm:text-3xl">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Prime Wheels Your trusted platform to buy, sell, or list cars
           </h2>
 
           <p class="mt-4 text-gray-700">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur doloremque saepe
-            architecto maiores repudiandae amet perferendis repellendus, reprehenderit voluptas
-            sequi.
+           Prime Wheels is your trusted online destination for buying, selling, and listing cars. Whether you're searching for a brand-new model or a reliable pre-owned vehicle, we connect you with verified sellers across the country. List your car with ease and reach thousands of potential buyers. At Prime Wheels, we ensure a secure, transparent, and hassle-free car trading experience for everyone.
+
+
           </p>
         </div>
       </div>

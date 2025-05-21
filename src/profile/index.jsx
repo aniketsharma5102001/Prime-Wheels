@@ -6,6 +6,7 @@ import MyListing from './components/MyListing'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 
+
 function Profile() {
   return (
     <div>
@@ -15,15 +16,15 @@ function Profile() {
 
           <TabsList className="w-full flex justify-start">
             <TabsTrigger value="my-listing">My Listing</TabsTrigger>
-            <TabsTrigger value="inbox">Inbox</TabsTrigger>
-            <TabsTrigger value="profile">Profile</TabsTrigger>
+            {/* <TabsTrigger value="inbox">Inbox</TabsTrigger>
+            <TabsTrigger value="profile">Profile</TabsTrigger> */}
 
           </TabsList>
           <TabsContent value="my-listing" >
             <MyListing />
           </TabsContent>
-          <TabsContent value="inbox">Inbox Tab</TabsContent>
-          <TabsContent value="profile">profile Tab</TabsContent>
+          {/* <TabsContent value="inbox"><Inbox/></TabsContent>
+          <TabsContent value="profile">profile Tab</TabsContent> */}
         </Tabs>
 
 
