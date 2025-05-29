@@ -3,7 +3,7 @@ import Header from './components/Header'
 import Hero from './components/Hero'
 import Category from './components/Category'
 import MostSearchcar from './components/MostSearchcar'
-import InfoSection from './components/infoSection';
+import InfoSection from './components/InfoSection';
 import   Footer from './components/Footer'
 
 function Home() {
