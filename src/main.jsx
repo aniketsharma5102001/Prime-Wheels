@@ -2,7 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import Home from './home'
+import Home from './Home'
 import Contact from './contact'
 
 import {ClerkProvider  } from "@clerk/clerk-react";
@@ -11,7 +11,7 @@ import AddListing from './add-Listing';
 import { Toaster } from './components/ui/sonner'
 import SearchByCatgory from './search/[category]'
 import SearchByOptions from './search'
-import ListingDetail from './listing-details/[id]'
+import ListingDetail from './listing-details/[id]/Index'
 
 
 
