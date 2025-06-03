@@ -11,7 +11,9 @@ import AddListing from './add-Listing';
 import { Toaster } from './components/ui/sonner'
 import SearchByCatgory from './search/[category]'
 import SearchByOptions from './search'
-import ListingDetail from './listing-details/[id]/Index'
+import ListingDetail from './listing-details/[id]/index'
+
+
 
 
 
