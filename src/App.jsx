@@ -1,14 +1,13 @@
-import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-react'
+import React from 'react';
+import Header from './components/Header';
 
-export default function App() {
+const App = ({ children }) => {
   return (
-    <header>
-      <SignedOut>
-        <SignInButton />
-      </SignedOut>
-      <SignedIn>
-        <UserButton />
-      </SignedIn>
-    </header>
-  )
-}
+    <>
+      <Header />
+      <main>{children}</main>
+    </>
+  );
+};
+
+export default App;
