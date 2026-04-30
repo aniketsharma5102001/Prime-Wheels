@@ -2,7 +2,7 @@
 
 A **car listing platform** built with React and Vite — a modern, responsive web app where users can browse, list, and explore cars seamlessly.
 
-Live Demo: https://prime-wheels.vercel.app :contentReference[oaicite:1]{index=1}
+Live Demo: https://prime-wheels.vercel.app :contentReference
 
 ---
 
